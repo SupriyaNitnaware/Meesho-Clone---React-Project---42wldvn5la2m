@@ -1,0 +1,112 @@
+.header
+{
+    height: 75px;
+    padding: 0px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 400;
+    border-bottom: 1px solid #ccc;
+}
+
+.header_left, .header_right{
+    display: flex;
+    align-items: center;
+}
+
+
+img{
+    width: 100%;
+}
+
+.h_logo
+{
+    width: 155px;
+}
+
+.searchBox{
+    width: 360px;
+    height: 45px;
+    outline: 1px solid #ccc;
+    display: flex;
+    margin-left: 25px;
+    border-radius: 3px;
+    align-items: center;
+    padding: 7px;
+}
+
+.searchIcon{
+    width: 20px;
+    margin: 5px;
+}
+
+.input_search{
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 15px;
+}
+
+.mobile_icon{
+    width: 20px;
+    margin: 5px;
+}
+
+.download_app{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding-right: 20px;
+}
+
+.download_app :hover {
+    color: palevioletred;
+    cursor: pointer;
+}
+
+.download_app p{
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+} 
+
+.profile_cart{
+    display: flex;
+    align-items: center;
+    
+}
+
+.profile_cart:hover{
+    /* color: palevioletred; */
+}
+
+.signin{
+    text-decoration: none;
+    color: #111;
+}
+
+
+.profile_icon, .cart_icon{
+
+    width: 20px;
+}
+
+.profile_cart p{
+    margin: 0;
+    padding: 0;
+}
+
+.profile_container, .cart{
+    padding: 0px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.become_supplier{
+    padding: 0px 30px;
+    border-left: 2px solid #ccc ;
+    border-right: 2px solid #ccc ;
+    font-size: 17px;
+}
