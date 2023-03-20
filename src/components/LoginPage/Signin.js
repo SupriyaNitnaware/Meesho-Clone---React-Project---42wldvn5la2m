@@ -32,8 +32,7 @@ const Signin = () => {
   }
 
   const loginFn = () => {
-
-    // console.log("hi");
+    
     const ret = validation();
     if(ret)
     {
@@ -49,18 +48,19 @@ const Signin = () => {
       {
         if(temp[i].username === username && temp[i].password === password)
         {
-          setStatus(true);
+          // setStatus(true);
+          navigate("/")
 
           let Obj = {
             ...localContext.appState,
-            loginstatus: true, // means logged in
+            loginStatus: true, // means logged in
             username: loginformdata.username
           }
 
           localContext.setAppState(Obj)
         }
       }
-        navigate("/")
+        
     }
     // setFormData(initialData)
   }

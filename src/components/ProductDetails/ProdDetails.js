@@ -2,9 +2,12 @@ import React from 'react'
 import "./ProdDetails.css"
 import { useParams } from 'react-router-dom';
 import {useState, useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 const ProdDetails = () => {
+
+  const ng = useNavigate();
 
   const temp = useParams();
   console.log(temp.id);
@@ -21,6 +24,16 @@ const ProdDetails = () => {
 
   }
 
+  const addCartFn = () => {
+
+    let tempCart = JSON.parse(localStorage.getItem('cart')) || [];
+    localStorage.setItem("cart", JSON.stringify([...tempCart, product]))
+    ng('/cart')
+
+  }
+
+
+
   useEffect(() => {
 
     fetchAPI(temp.id);
@@ -35,7 +48,7 @@ const ProdDetails = () => {
       </div>
       <div className="prod_image1">
         <img src={product.image}/>
-        <button>Add to Cart</button>
+        <button onClick={addCartFn}>Add to Cart</button>
       </div>
       <div>
         <div className="prod_details">

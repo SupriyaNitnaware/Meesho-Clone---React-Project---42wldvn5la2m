@@ -5,7 +5,7 @@ import search from "./search.png"
 import mobile from "./mobile.png"
 import profile from "./user.png"
 import cart from "./cart.png"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { DataAppContext } from '../DataApp'
 
@@ -13,9 +13,21 @@ const Navbar = () => {
 
     const localContext = useContext(DataAppContext)
 
-    const {appState} = localContext
+    const {appState, setAppState} = localContext
 
     const {username, loginStatus} = appState;
+
+    const navigate = useNavigate();
+
+    const logoutFn = () => {
+
+        setAppState({
+            ...appState,
+            loginStatus: false,
+            username: ''
+        })
+        navigate('/signin')
+    }
 
     return (
         <>
@@ -48,17 +60,17 @@ const Navbar = () => {
                         <p>Become a Supplier</p>
                     </div>
 
-                    {/* <div className='profile_cart'>
+                    <div className='profile_cart'>
                         <div className='profile_container'>
                             <div className='profile_icon'>
                                 <img src={profile} />
-                            </div> */}
+                            </div>
                             
                             {
                                 loginStatus ?  
                                 <>
-                                    <Link to="/cart" className="signin">Logout
-                                    {loginStatus && <p>hi {username} !</p>}</Link>
+                                    <p onClick={logoutFn} >Logout
+                                    {loginStatus && <p>hi {username} !</p>}</p>
                                 </> 
                                 :
                                 <>
@@ -72,10 +84,11 @@ const Navbar = () => {
                                 <img src={cart} />
                                 {/* <p>8</p> */}
                             </div>
-                            <p>Cart</p>
+                            <Link to="/cart"><p>Cart</p></Link>
+                            
                         </div>
-                    {/* </div>
-                </div> */}
+                    </div>
+                </div>
             </header>
         </>
     )

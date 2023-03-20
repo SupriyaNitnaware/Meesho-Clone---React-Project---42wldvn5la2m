@@ -1,20 +1,72 @@
-.header_cart
+.cart1
 {
     margin: auto;
-    width: 50%;
+    width: 55%;
     border-bottom: 1px solid #ccc;
     margin-top: 50px;
-    opacity: 0.6;
     color: black;
+    /* background-color: aqua; */
+    border: 1px solid palevioletred;
+    border-radius: 5px;
+    padding: 10px;
 }
 
-ul{
-    
-    list-style: none;
+.cart2
+{
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 0;
+    flex-direction: column;
 }
 
+.cart_id{
+    display: flex;
+    justify-content: space-between;
+}
 
+.cart_image{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    width: 130px;
+    height: 100px;
+    
+}
+
+.cart_image h3{
+    padding: 0 70px;
+    font-size: 15px;
+}
+
+.items{
+   margin: 13px 50px;
+}
+
+.items>input{
+    margin: 0 50px;
+ }
+
+ .total_cost{
+    text-align: center;        
+    width: 100%;                         
+ }
+
+.btn
+{
+    /* background-color: aquamarine; */
+    display: flex;
+    justify-content: center;
+}
+
+.btn>button{
+    border: none;
+}
+
+.payment_btn
+{
+    text-decoration: none;
+    padding: 15px;
+    background-color: palevioletred;
+    color: #fff;
+    border-radius: 5px;
+    float: right;
+   
+}

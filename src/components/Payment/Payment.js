@@ -1,8 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import "./Payment.css"
+
+import { DataAppContext } from '../DataApp';
 
 const Payment = () => {
+
+  const total = useContext(DataAppContext);
+
+
   return (
-    <div>Payment</div>
+    <div className="payment">
+      h
+    </div>
   )
 }
 
