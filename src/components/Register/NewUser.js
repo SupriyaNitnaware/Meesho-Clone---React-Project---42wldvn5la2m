@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import "./NewUser.css"
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const NewUser = () => {
+
+  const navigate = useNavigate();
 
   const initialData = {
     username: '',
@@ -13,12 +16,12 @@ const NewUser = () => {
 
   const [status, setStatus] = useState(false)
 
-  const [formError, setFormError] = useState(initialData);
+  const [formError, setFormError] = useState([]);
 
   const updateData = (e) => {
-    console.log(e.target.id, e.targe.value)
+    console.log(e.target.id, e.target.value)
     let tempObj = {}
-    tempObj[e.target.id] = e.targe.value;
+    tempObj[e.target.id] = e.target.value;
     setFormData({
       ...formdata, ...tempObj
     })
@@ -26,19 +29,49 @@ const NewUser = () => {
 
   const registerFn = () => {
 
-    setStatus(true)
+    const ret = validation();
+    if(ret)
+    {
+      setStatus(true)
+       // user is key name, and formdata is an value
+      let temp = JSON.parse(localStorage.getItem('users')) || [];
+      // new entry formdata
+      localStorage.setItem('users',JSON.stringify([...temp, formdata]));
 
-    // user is key name, and formdata is an value
-    localStorage.setItem('users', formdata)
+      navigate("/signin")
+    }
 
-    setFormData(initialData)
-    
+  }
+
+  const validation = () => {
+
+    let errorObj = {}
+
+    if(formdata.username === ""){
+      errorObj.username = "username error";
+    }
+    if(formdata.password === ""){
+      errorObj.password = "password error";
+    }
+
+    //copy errorobj in formerror state
+    setFormError(errorObj);
+
+    // if errorobj is not blank
+    if(Object.keys(errorObj).length > 0)
+    {
+      return false;
+    }
+    else{
+      return true;
+    }
+
   }
 
   useEffect(()=>{
     
-    let temp =localStorage.getItem('users')
-    console.log(temp)
+    let temp = localStorage.getItem('users')
+    console.log(JSON.parse(temp))
 
   }, [status])
 
@@ -47,16 +80,14 @@ const NewUser = () => {
     <div className="containerr">
 
       <h3>Sign Up</h3>
-      <input type="text" placeholder="Enter Email" id="username"  onChange={updateData}  />
+      <input type="text" placeholder="Enter Email" id="username" className="form"  onChange={updateData}  />
       <div>{formError.username}</div>
-      <input type="password" placeholder="Enter Password" id="password"  onChange={updateData}  />
+      <input type="password" placeholder="Enter Password" id="password" className="form"  onChange={updateData}  />
       <div>{formError.password}</div>
 
-      {/* <div className="rows">
-        <Link to="/signin" ><button onClick={registerFn}>Submit</button></Link>
-      </div> */}
-      <button onClick={registerFn}>Submit</button>
-
+      <div className="rows">
+      <button onClick={registerFn} className="button1">Submit</button>
+      </div>
       {
         status && <div>
           <h2>Successfully Registred</h2>

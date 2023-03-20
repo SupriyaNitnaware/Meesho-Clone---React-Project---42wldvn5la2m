@@ -6,19 +6,29 @@ import Product from '../Products/Product';
 import ProdDetails from '../ProductDetails/ProdDetails';
 import Signin from '../LoginPage/Signin';
 import NewUser from '../Register/NewUser';
+import Cart from '../Cart/Cart';
+import Payment from '../Payment/Payment';
+import PageNotFound from '../PageNotFound';
+import DataApp from '../DataApp';
 
 const Allrouting = () => {
     return (
         <div>
             <BrowserRouter>
-                <Navbar />
-                <SubNav />
-                <Routes>
-                    <Route path="signin" element={<Signin />} />
-                    <Route path="reg" element={<NewUser />} />
-                    <Route path="/" element={<Product/>} />
-                    <Route path="/pdetails/:id" element={<ProdDetails/>} />
-                </Routes>
+                <DataApp>
+                    <Navbar />
+                    <SubNav />
+                    <Routes>
+                        <Route path="signin" element={<Signin />} />
+                        <Route path="reg" element={<NewUser />} />
+                        <Route path="/" element={<Product/>} />
+                        <Route path="/pdetails/:id" element={<ProdDetails/>} />
+                        <Route path="cart" element={<Cart />} />
+                        <Route path="payment" element={<Payment />} />
+
+                        <Route path="/*" element={<PageNotFound />} />
+                    </Routes>
+                </DataApp>
             </BrowserRouter>
         </div>
     )

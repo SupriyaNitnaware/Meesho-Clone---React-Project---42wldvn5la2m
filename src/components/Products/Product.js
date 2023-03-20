@@ -42,9 +42,6 @@ const Product = () => {
                                 <p className="rate">{item.rating.rate}</p>
                                 <p className="ratecc">{item.rating.count}  Reviews </p>
                             </div>
-                            <div>
-                                {/* <Link to={`/pdetails/${item.id}` }> View Product</Link> */}
-                            </div>
 
                             </Link>
 
