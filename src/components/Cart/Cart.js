@@ -16,6 +16,16 @@ function Cart() {
     // Get the cart information from local storage
     const cartData = JSON.parse(localStorage.getItem('cart')) || [];
     setCart(cartData);
+
+    if(!ctotal.appState.loginStatus)
+    {
+      navigate("/signin")
+    }
+    else{
+      console.log("project working");
+    }
+
+
   }, []);
 
   // Function to update the cart information in local storage
@@ -52,13 +62,6 @@ function Cart() {
 
   }
 
-  if(ctotal.appState.loginStatus !== true)
-  {
-    navigate('/signin')
-  }
-  else{
-
-  
 
   return (
     <div className="cart1">
@@ -91,7 +94,7 @@ function Cart() {
       </div>
     </div>
   );
-  }
+  
 }
 
 export default Cart;

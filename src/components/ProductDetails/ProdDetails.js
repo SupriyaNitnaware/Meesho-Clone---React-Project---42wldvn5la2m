@@ -41,7 +41,7 @@ const ProdDetails = () => {
   }, [temp.id])
 
 
-  return (
+  return(
     <section className='main_product'>
       <div className="prod_image">
         <img src={product.image}  />
@@ -54,6 +54,10 @@ const ProdDetails = () => {
         <div className="prod_details">
           <p className='pp'>{product.title}</p>
           <h3> ₹ {product.price}</h3>
+          <div className="rtt">
+            <h3> {product.rating && product.rating.rate}</h3>
+            <p> {product.rating && product.rating.count} Reviews</p>
+          </div>
         </div>  
         <div className="prod_details">
           <h3>Select Size</h3>
