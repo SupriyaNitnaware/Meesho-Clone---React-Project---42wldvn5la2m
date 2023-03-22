@@ -1,0 +1,43 @@
+.payment{
+
+    width: 20%;
+    margin: 60px auto;
+    background: #fdf8f8;
+    padding: 30px 60px 40px 60px;
+    box-shadow: 2px 2px 3px rgb(0 0 0 / 10%);
+    -moz-box-shadow: 10px 10px 10px #000;
+    border-radius: 10px;
+}
+
+.payment_input>input{
+    width: 100%;
+    padding: 10px 15px;
+    margin: 5px 0;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.payment_method{
+    margin: 10px auto;
+    padding: 10px;
+   
+}
+
+.payment_method>input{
+    margin: 10px 0;
+}
+
+.payment_method>button{
+    background-color: palevioletred;
+    border-style: none;
+    padding: 10px;
+    color: #fff;
+    border-radius: 5px;
+    margin:10px;
+}
+
+.validation{
+    color: red;
+    font-size: 15px;
+    font-weight: 400;
+}

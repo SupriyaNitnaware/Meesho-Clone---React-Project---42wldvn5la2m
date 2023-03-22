@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { DataAppContext } from '../DataApp';
 import { useNavigate } from 'react-router-dom';
 
-function Cart() {
+const Cart = () => {
 
   const navigate = useNavigate();
 
@@ -29,20 +29,20 @@ function Cart() {
   }, []);
 
   // Function to update the cart information in local storage
-  function updateCart(cart) {
+  const updateCart = (cart) => {
     localStorage.setItem('cart', JSON.stringify(cart));
     setCart(cart);
   }
 
   // Function to handle the quantity input change
-  function handleQuantityChange(index, event) {
+  const handleQuantityChange = (index, event)  => {
     const newCart = [...cart];
     newCart[index].quantity = parseInt(event.target.value);
     updateCart(newCart);
   }
 
   // Function to handle the remove button click
-  function handleRemoveClick(index) {
+  const handleRemoveClick = (index) => {
     const newCart = [...cart];
     newCart.splice(index, 1);
     updateCart(newCart);
@@ -62,6 +62,12 @@ function Cart() {
 
   }
 
+  useEffect(() => {
+
+    console.log("hi");
+
+  },[handleRemoveClick])
+
 
   return (
     <div className="cart1">
@@ -69,18 +75,18 @@ function Cart() {
       <div className="cart2">
         {cart.map((item, index) => (
           <div key={item.id} className="cart_id">
-            <div className="cart_image">
-              <img  src={item.image} />
-              <h3>{item.title}</h3>
-              <p>${item.price}</p>
-            </div>
-            <div className='items'>
-              <input
-                type="number"
-                min="1"
-                onChange={(event) => handleQuantityChange(index, event)}
-              />
-              <button onClick={() => handleRemoveClick(index)}>Remove</button>
+              <div className="cart_image">
+                <img  src={item.image} />
+                <h3>{item.title}</h3>
+                <p>${item.price}</p>
+              </div>
+              <div className='items'>
+                <input
+                  type="number"
+                  min="1"
+                  onChange={(event) => handleQuantityChange(index, event)}
+                />
+                <button onClick={() => handleRemoveClick(index)}>Remove</button>
             </div>
           </div>
         ))}

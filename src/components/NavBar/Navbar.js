@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import "./Navbar.css"
 import img from "./meesho.png"
 import search from "./search.png"
@@ -17,6 +17,8 @@ const Navbar = () => {
 
     const {username, loginStatus} = appState;
 
+    const [navCart, setNavCart] = useState(0);
+
     const navigate = useNavigate();
 
     const logoutFn = () => {
@@ -29,12 +31,21 @@ const Navbar = () => {
         navigate('/signin')
     }
 
+
+    useEffect(() => {
+
+        const cartCount = JSON.parse(localStorage.getItem("cart"))
+        console.log("cart data",cartCount.length);
+        setNavCart(cartCount.length)
+
+    })
+
     return (
         <>
             <header className='header'>
                 <div className="header_left">
                     <div className='h_logo'>
-                        <img src={img} />
+                        <Link to="/"> <img src={img} /></Link>
                     </div>
                     {/* search */}
                     <div className='searchBox'>
@@ -82,9 +93,12 @@ const Navbar = () => {
                         <div className='cart'>
                             <div className='cart_icon'>
                                 <img src={cart} />
-                                {/* <p>8</p> */}
+                                {
+                                    loginStatus && <span>{navCart}</span>
+                                }
+                                
                             </div>
-                            <Link to="/cart"><p>Cart</p></Link>
+                            <Link to="/cart" className="cartt"><p>Cart</p></Link>
                             
                         </div>
                     </div>

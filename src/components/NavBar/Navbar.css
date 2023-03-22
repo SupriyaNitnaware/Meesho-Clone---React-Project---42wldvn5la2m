@@ -77,7 +77,7 @@ img{
 }
 
 .profile_cart:hover{
-    /* color: palevioletred; */
+    color: palevioletred;
 }
 
 .signin{
@@ -85,10 +85,37 @@ img{
     color: #111;
 }
 
+.signin:hover{
+    color:palevioletred
+}
 
-.profile_icon, .cart_icon{
+.cartt{
+    text-decoration: none;
+    /* font-size: 40px; */
+}
+
+.cartt:hover{
+   color:palevioletred
+}
+
+
+.profile_icon{
 
     width: 20px;
+}
+
+.cart_icon{
+    display: flex;
+    width: 20px;
+}
+
+.cart_icon>span{
+    background-color: palevioletred;
+    color: #fff;
+    text-align: center;
+    border-radius: 20px;
+    padding: 3px;
+    margin-bottom: 10px;
 }
 
 .profile_cart p{
@@ -110,3 +137,4 @@ img{
     border-right: 2px solid #ccc ;
     font-size: 17px;
 }
+
