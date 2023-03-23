@@ -35,8 +35,7 @@ const Navbar = () => {
     useEffect(() => {
 
         const cartCount = JSON.parse(localStorage.getItem("cart"))
-        console.log("cart data",cartCount.length);
-        setNavCart(cartCount.length)
+        // setNavCart(cartCount.length)
 
     })
 
