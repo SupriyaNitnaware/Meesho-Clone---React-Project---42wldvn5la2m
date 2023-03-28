@@ -17,7 +17,9 @@ const Navbar = () => {
 
     const {username, loginStatus} = appState;
 
-    const [navCart, setNavCart] = useState(0);
+    const [navCart, setNavCart] = useState([]);
+
+    const [searchBar, setSearchBar] = useState("");
 
     const navigate = useNavigate();
 
@@ -31,11 +33,21 @@ const Navbar = () => {
         navigate('/signin')
     }
 
+    const handleSearch = (e) => {
+        setSearchBar(e.target.value);
 
+        const obj = {
+            ...appState,
+            searchItem: searchBar,
+        }
+        setAppState(obj)
+    }
+
+   
     useEffect(() => {
 
         const cartCount = JSON.parse(localStorage.getItem("cart"))
-        // setNavCart(cartCount.length)
+       
 
     })
 
@@ -51,7 +63,7 @@ const Navbar = () => {
                         <div className='searchIcon'>
                             <img src={search} />
                         </div>
-                        <input type="text" placeholder="Try Saree,Kurti or Search by Product Code" className="input_search" />
+                        <input type="text" placeholder="Try Saree,Kurti or Search by Product Code" className="input_search" onChange={handleSearch} />
                         <div className="close_Search">
                             {/* <i class="fa-solid fa-xmark"></i> */}
                         </div>
@@ -93,7 +105,7 @@ const Navbar = () => {
                             <div className='cart_icon'>
                                 <img src={cart} />
                                 {
-                                    loginStatus && <span>{navCart}</span>
+                                    loginStatus && <span>{cartCount.length}</span>
                                 }
                                 
                             </div>

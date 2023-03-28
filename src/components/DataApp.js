@@ -8,6 +8,7 @@ const DataApp = (props) => {
         loginStatus: false,
         username: '',
         totalCount: 0,
+        searchItem: '',
     }
 
     const [appState, setAppState] = useState(initialState);
